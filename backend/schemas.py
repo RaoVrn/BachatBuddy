@@ -9,11 +9,15 @@ class UserBase(BaseModel):
 class UserCreate(UserBase):
     password: str
 
+class UserLogin(BaseModel):
+    email: str
+    password: str
+
 class UserRead(UserBase):
     id: int
 
     class Config:
-        orm_mode = True
+        from_attributes = True
 
 class ExpenseBase(BaseModel):
     amount: float
@@ -29,4 +33,4 @@ class ExpenseRead(ExpenseBase):
     user_id: int
 
     class Config:
-        orm_mode = True
+        from_attributes = True
